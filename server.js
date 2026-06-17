@@ -6,6 +6,14 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+setInterval(() => {
+    fetch("https://adrads.onrender.com/").then(res => {
+        if (res.ok) {
+            console.log("Self-ping succeed");
+        }
+    }).catch(err => console.log("Self-ping failed: ", err.message));
+}, 10 * 60 * 1000);
+
 const myAds = [
     {
         ad_id: "adrendev_dark",
@@ -24,6 +32,10 @@ const myAds = [
         }
     },
 ];
+
+app.get("/", (req, res) => {
+    res.status(200).send("Hey!");
+})
 
 app.get('/api/v1/ads/random', (req, res) => {
 
