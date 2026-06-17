@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -59,6 +60,8 @@ app.get('/api/v1/ads/random', (req, res) => {
 
     res.json(selectedAd);
 });
+
+app.use("/assets/images", express.static(path.join(__dirname, "public/assets/images")));
 
 app.listen(PORT, () => {
     console.log(`adrads started on PORT ${PORT}.`);
