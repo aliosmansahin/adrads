@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 setInterval(() => {
-    fetch("https://adrads.onrender.com/").then(res => {
+    fetch("https://adrads.adrendev.com/").then(res => {
         if (res.ok) {
             console.log("Self-ping succeed");
         }
